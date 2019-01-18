@@ -1,4 +1,4 @@
-## Operating System
+## Operating System(Original Resource: CyC2018:CS-note)
 ### Basic Knowledge
 
 1. difference between Thread & Process
