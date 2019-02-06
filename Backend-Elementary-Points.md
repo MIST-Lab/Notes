@@ -56,6 +56,9 @@ z
 7. Process communication method and usage scenarios
 8. Deadlock 死锁的必要条件、解决死锁策略、能写出和分析死锁的代码、能说明在数据库管理系统或者Java中如何解决死锁
 9. Virtual memory usage,the paging system implements the principle of virtual memory.
-10. 页面置换算法的原理，特别是LRU的实现原理，最好手写，再说明它在Redis等作为缓存置换算法。
-11. 比较分页与分段的区别
-12. 分析静态链接的不足，以及动态链接的特点
+10. The principle of page replacement algorithm, especially the implementation principle of LRU, it is best to handwriting, and then explain that it is in Redis and so on as a cache replacement algorithm.
+11. page replacement & paragraph replacement
+12. Analyze the inadequacy of static links and the characteristics of dynamic links
+
+
+### Linux
