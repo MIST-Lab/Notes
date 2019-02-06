@@ -38,7 +38,9 @@ y
 z
 但是在A中是没有调用B的。
 
-看起来A、B的执行有点像多线程，但协程的特点在于是一个线程执行，那和多线程比，协程有何优势？
+看起来A、B的执行有点像多线程，但协程的特点在于是一个线程执行，
+
+那和多线程比，协程有何优势？
 
 最大的优势就是协程极高的执行效率。因为子程序切换不是线程切换，而是由程序自身控制，因此，没有线程切换的开销，和多线程比，线程数量越多，协程的性能优势就越明显。
 
@@ -46,67 +48,8 @@ z
 
 因为协程是一个线程执行，那怎么利用多核CPU呢？最简单的方法是多进程+协程，既充分利用多核，又充分发挥协程的高效率，可获得极高的性能。
 
-Python对协程的支持还非常有限，用在generator中的yield可以一定程度上实现协程。虽然支持不完全，但已经可以发挥相当大的威力了。
-
-来看例子：
-
-传统的生产者-消费者模型是一个线程写消息，一个线程取消息，通过锁机制控制队列和等待，但一不小心就可能死锁。
-
-如果改用协程，生产者生产消息后，直接通过yield跳转到消费者开始执行，待消费者执行完毕后，切换回生产者继续生产，效率极高：
-
-import time
-
-def consumer():
-    r = ''
-    while True:
-        n = yield r
-        if not n:
-            return
-        print('[CONSUMER] Consuming %s...' % n)
-        time.sleep(1)
-        r = '200 OK'
-
-def produce(c):
-    c.next()
-    n = 0
-    while n < 5:
-        n = n + 1
-        print('[PRODUCER] Producing %s...' % n)
-        r = c.send(n)
-        print('[PRODUCER] Consumer return: %s' % r)
-    c.close()
-
-if __name__=='__main__':
-    c = consumer()
-    produce(c)
-执行结果：
-
-[PRODUCER] Producing 1...
-[CONSUMER] Consuming 1...
-[PRODUCER] Consumer return: 200 OK
-[PRODUCER] Producing 2...
-[CONSUMER] Consuming 2...
-[PRODUCER] Consumer return: 200 OK
-[PRODUCER] Producing 3...
-[CONSUMER] Consuming 3...
-[PRODUCER] Consumer return: 200 OK
-[PRODUCER] Producing 4...
-[CONSUMER] Consuming 4...
-[PRODUCER] Consumer return: 200 OK
-[PRODUCER] Producing 5...
-[CONSUMER] Consuming 5...
-[PRODUCER] Consumer return: 200 OK
-
-注意到consumer函数是一个generator（生成器），把一个consumer传入produce后：
-首先调用c.next()启动生成器；
-然后，一旦生产了东西，通过c.send(n)切换到consumer执行；
-consumer通过yield拿到消息，处理，又通过yield把结果传回；
-produce拿到consumer处理的结果，继续生产下一条消息；
-produce决定不生产了，通过c.close()关闭consumer，整个过程结束。
-整个流程无锁，由一个线程执行，produce和consumer协作完成任务，所以称为“协程”，而非线程的抢占式多任务。
 
 最后套用Donald Knuth的一句话总结协程的特点：“子程序就是协程的一种特例。”
-	https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000
 
 
 6. Common problems for the process sync
