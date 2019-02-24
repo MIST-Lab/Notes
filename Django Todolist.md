@@ -2,21 +2,21 @@
 
 1. Setup the env (with python3 installed)
 
-![Screen Shot 2019-02-23 at 12.36.47 PM](./Screen Shot 2019-02-23 at 12.36.47 PM.png)
+![Screen Shot 2019-02-23 at 12.36.47 PM](./static/Screen Shot 2019-02-23 at 12.36.47 PM.png)
 
 2. init the project
 
-   ![Screen Shot 2019-02-23 at 12.36.34 PM](./Screen Shot 2019-02-23 at 12.36.34 PM.png)
+   ![Screen Shot 2019-02-23 at 12.36.34 PM](./static/Screen Shot 2019-02-23 at 12.36.34 PM.png)
 
-   ![Screen Shot 2019-02-23 at 12.36.10 PM](./Screen Shot 2019-02-23 at 12.36.10 PM.png)
+   ![Screen Shot 2019-02-23 at 12.36.10 PM](./static/Screen Shot 2019-02-23 at 12.36.10 PM.png)
 
 3. Update the settings.py
 
-   ![Screen Shot 2019-02-23 at 12.45.09 PM](./Screen Shot 2019-02-23 at 12.45.09 PM.png)
+   ![Screen Shot 2019-02-23 at 12.45.09 PM](./static/Screen Shot 2019-02-23 at 12.45.09 PM.png)
 
-   ![Screen Shot 2019-02-23 at 12.45.23 PM](./Screen Shot 2019-02-23 at 12.45.23 PM.png)
+   ![Screen Shot 2019-02-23 at 12.45.23 PM](./static/Screen Shot 2019-02-23 at 12.45.23 PM.png)
 
-   ![Screen Shot 2019-02-23 at 12.59.41 PM](./Screen Shot 2019-02-23 at 12.59.41 PM.png)
+   ![Screen Shot 2019-02-23 at 12.59.41 PM](./static/Screen Shot 2019-02-23 at 12.59.41 PM.png)
 
    ``` python
    # add this to MIDDLEWARE & delete the STATICFILES_STORAGE line
@@ -53,11 +53,11 @@
            return self.title #name to be shown when called
    ```
 
-   ![Screen Shot 2019-02-23 at 1.01.30 PM](./Screen Shot 2019-02-23 at 1.01.30 PM.png)
+   ![Screen Shot 2019-02-23 at 1.01.30 PM](./static/Screen Shot 2019-02-23 at 1.01.30 PM.png)
 
-   ![Screen Shot 2019-02-23 at 1.02.26 PM](./Screen Shot 2019-02-23 at 1.02.26 PM.png)
+   ![Screen Shot 2019-02-23 at 1.02.26 PM](./static/Screen Shot 2019-02-23 at 1.02.26 PM.png)
 
-5. superuser account generate![Screen Shot 2019-02-23 at 1.03.58 PM](./Screen Shot 2019-02-23 at 1.03.58 PM.png)
+5. superuser account generate![Screen Shot 2019-02-23 at 1.03.58 PM](./static/Screen Shot 2019-02-23 at 1.03.58 PM.png)
 
 6. Templates folders
 
@@ -464,5 +464,5 @@
 
 9. FINISHED
 
-   ![Screen Shot 2019-02-23 at 1.42.57 PM](./Screen Shot 2019-02-23 at 1.42.57 PM.png)
+   ![Screen Shot 2019-02-23 at 1.42.57 PM](./static/Screen Shot 2019-02-23 at 1.42.57 PM.png)
 
