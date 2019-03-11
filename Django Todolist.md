@@ -25,7 +25,37 @@
 
    
 
-4. Build the models.py
+4. Build the views.py
+
+   ``` python
+   from django.shortcuts import render
+   
+   # Create your views here.
+   from django.shortcuts import render,redirect
+   from .models import TodoList, Category
+   def index(request): #the index view
+       todos = TodoList.objects.all() #quering all todos with the object manager
+       categories = Category.objects.all() #getting all categories with object manager
+       if request.method == "POST": #checking if the request method is a POST
+           if "taskAdd" in request.POST: #checking if there is a request to add a todo
+               title = request.POST["description"] #title
+               date = str(request.POST["date"]) #date
+               category = request.POST["category_select"] #category
+               content = title + " -- " + date + " " + category #content
+               Todo = TodoList(title=title, content=content, due_date=date, category=Category.objects.get(name=category))
+               Todo.save() #saving the todo 
+               return redirect("/") #reloading the page
+           if "taskDelete" in request.POST: #checking if there is a request to delete a todo
+               checkedlist = request.POST["checkedbox"] #checked todos to be deleted
+               for todo_id in checkedlist:
+                   todo = TodoList.objects.get(id=int(todo_id)) #getting todo id
+                   todo.delete() #deleting todo
+       return render(request, "index.html", {"todos": todos, "categories":categories})
+   ```
+
+   
+
+5. Build the models.py
 
    ```python
    from django.db import models
@@ -57,9 +87,9 @@
 
    ![Screen Shot 2019-02-23 at 1.02.26 PM](./static/Screen Shot 2019-02-23 at 1.02.26 PM.png)
 
-5. superuser account generate![Screen Shot 2019-02-23 at 1.03.58 PM](./static/Screen Shot 2019-02-23 at 1.03.58 PM.png)
+6. superuser account generate![Screen Shot 2019-02-23 at 1.03.58 PM](./static/Screen Shot 2019-02-23 at 1.03.58 PM.png)
 
-6. Templates folders
+7. Templates folders
 
    ```bash
    cd todolist
@@ -433,7 +463,7 @@
    }
    ```
 
-7. Update the urls.py
+8. Update the urls.py
 
    ```python
    from django.contrib import admin
@@ -447,7 +477,7 @@
    ]
    ```
 
-8. Register the models in admin.py
+9. Register the models in admin.py
 
    ```python
    from django.contrib import admin
@@ -462,7 +492,7 @@
    admin.site.register(models.Category, CategoryAdmin)
    ```
 
-9. FINISHED
+10. FINISHED
 
    ![Screen Shot 2019-02-23 at 1.42.57 PM](./static/Screen Shot 2019-02-23 at 1.42.57 PM.png)
 
