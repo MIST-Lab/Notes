@@ -4,7 +4,7 @@
 
 github repo: <https://github.com/sol-prog/x86-64-minimal-JIT-compiler-Cpp>
 
-Writing a minimal x86-64 JIT compiler in C++ - Part 1
+Writing a minimal x86-64 JIT compiler in C++ - Part 1 
 
 - [Part 1 - Generate and use a simple function at runtime](https://solarianprogrammer.com/2018/01/10/writing-minimal-x86-64-jit-compiler-cpp/)
 - [Part 2 - Call a C++ function from a function generated at runtime](https://solarianprogrammer.com/2018/01/12/writing-minimal-x86-64-jit-compiler-cpp-part-2/)
